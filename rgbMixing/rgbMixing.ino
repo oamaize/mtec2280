@@ -33,14 +33,11 @@ void setMode(int mode){
    for(int i = 0; i < 255; i++){
      analogWrite(RLED, i);
      delay(10);
-   break;  
  }
     for(int i = 255; i > 0; i--){
      analogWrite(RLED, i);
      delay(10); 
-    break; 
  }
- //break;
  }
  else if(mode == 2){
    digitalWrite(RLED, LOW);
