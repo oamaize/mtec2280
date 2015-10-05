@@ -1,0 +1,6 @@
+This project is a simple led light show
+
+
+Input: Switch & Potentiometer
+Output: Light show with multiple modes, each mode can be controlled by the potentiometer
+
