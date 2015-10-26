@@ -1,0 +1,63 @@
+#include <LiquidCrystal.h>
+// initialize the library with the numbers of the interface pins
+LiquidCrystal lcd(4, 6, 10, 11, 12, 13);
+
+const int buttonPin2 = 2;     // the number of the pushbutton pin
+const int buttonPin3 = 3;     // the number of the pushbutton pin
+
+int buttonPushCounter2 = 0;   // counter for the number of button presses
+int buttonState2 = 0;         // current state of the button
+int lastButtonState2 = 0;     // previous state of the button
+
+int buttonPushCounter3 = 0;   // counter for the number of button presses
+int buttonState3 = 0;         // current state of the button
+int lastButtonState3 = 0;     // previous state of the button
+
+void setup() {
+// set up the LCD's number of columns and rows:
+lcd.begin(16, 2);
+// Print a message to the LCD.
+//lcd.print("hello, world!");
+//lcd.clear();
+pinMode(buttonPin2, INPUT); 
+pinMode(buttonPin3, INPUT); 
+}
+void loop() {
+// set the cursor to column 0, line 1
+// (note: line 1 is the second row, since counting begins with 0):
+// print the number of seconds since reset:
+if(buttonPushCounter2 == 0 && buttonPushCounter3 == 0){
+lcd.setCursor(0, 0);
+lcd.print("Press any button");
+lcd.setCursor(0, 1);
+lcd.print("to start...");
+}
+// print the number of seconds since reset:
+//lcd.print(millis() / 1000);
+
+buttonState2 = digitalRead(buttonPin2);
+buttonState3 = digitalRead(buttonPin3);
+
+if(buttonState2 != lastButtonState2 || buttonState3 != lastButtonState3){
+if(buttonState2 == HIGH) { lcd.clear(); buttonPushCounter2++;}
+if(buttonState3 == HIGH) { lcd.clear(); buttonPushCounter3++;}
+}
+  lastButtonState2 = buttonState2;
+  lastButtonState3 = buttonState3;
+
+changestate(buttonPushCounter2, buttonPushCounter3);
+//if (buttonPushCounter2 == 1 || buttonPushCounter3 == 1){
+//lcd.setCursor(0, 0);
+//lcd.clear();
+//lcd.print("TA DAhhhhh!");
+//} 
+}
+
+void changestate(int x, int y){
+if (x == 1 || y == 1){
+//lcd.clear();
+lcd.setCursor(0, 0);
+lcd.print("Jim's lost in the woods!");
+} 
+
+}
